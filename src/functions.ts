@@ -10,7 +10,7 @@ import { TREE_CONNECTORS } from "./constants";
 import { loadBuildConfiguration, packageBuild, readArticle, savePage } from "./file_io";
 import { BuildConfiguration, BuildData, BuildSheet, ClientTree, ClientTreeNode, ErrorNotice, InfoBox, InfoTag, Metadata, PageData, ProjectPackage, Reference, Tree, TreeNode } from "./interfaces";
 import { RefListing } from "./ref_listing_interfaces";
-import { renderArticle, renderHomepage, renderSearchPage, renderTreePage } from "./rendering";
+import { renderArticle, renderHomepage, renderSearchPage } from "./rendering";
 
 export function build(buildData: BuildData) {
 
@@ -23,7 +23,6 @@ export function build(buildData: BuildData) {
 
     savePage("index.html", renderHomepage(buildData));
     savePage("search.html", renderSearchPage(buildData));
-    savePage("tree.html", renderTreePage(buildData));
 
     packageBuild(buildData);
 

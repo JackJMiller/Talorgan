@@ -320,14 +320,6 @@ img {
     width: 100%;
 }
 
-.family-tree-node {
-    display: block;
-    background: yellow;
-    position: absolute;
-    top: 50px;
-    left: 50px;
-}
-
 .title {
     margin-top: 20px;
     margin-bottom: 10px;

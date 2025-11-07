@@ -6,7 +6,7 @@
 
 import HTMLRendering from "./html_rendering";
 import { MONTHS } from "./constants";
-import { BuildData, ImageDefinition, InfoBox, InlineElement, Metadata, Tree } from "./interfaces";
+import { BuildData, ImageDefinition, InfoBox, InlineElement, Metadata } from "./interfaces";
 import { markImage, recordRefListing, throwError, throwWarning } from "./functions";
 import { BirthCertificateRefListing, BookRefListing, CensusRefListing, DeathCertificateRefListing, ElectoralRegisterRefListing, JournalRefListing, LazyRefListing, MarriageCertificateRefListing, NewspaperRefListing, RefListing, TestimonialRefListing, ValuationRollRefListing, WebsiteRefListing } from "./ref_listing_interfaces";
 import { errorCheckReference, validateInfoBox, validateInfoTag } from "./validation";
@@ -17,10 +17,6 @@ export function renderHomepage(buildData: BuildData): string {
 
 export function renderArticle(source: InlineElement[], metadata: Metadata, buildData: BuildData): string {
     return HTMLRendering.renderArticle(source, metadata, buildData);
-}
-
-export function renderTreePage(buildData: BuildData): string {
-    return HTMLRendering.renderTreePage(buildData);
 }
 
 export function renderSearchPage(buildData: BuildData): string {

@@ -535,24 +535,6 @@ function renderSearchPage(buildData: BuildData): string {
     `);
 }
 
-function renderTreePage(buildData: BuildData): string {
-    return htmlString(`
-        <!DOCTYPE html>
-        <html>
-            ${renderHead(["main.css", "tree.css"])}
-            <body onresize="fixCanvas()">
-                ${renderHeader(false, buildData)}
-                <div id="tree-container">
-                    <div id="tree">
-                    </div>
-                </div>
-                ${renderFooter()}
-                ${renderScriptImports(["build_sheet.js", "tree_nodes.js", "functions.js", "tree.js"])}
-            </body>
-        </html>
-    `);
-}
-
 function renderStandardElement(element: any): string {
     let tag = element.tag;
     let elementID = (element.id !== undefined) ? "id=\""+element.id+"\"" : "";
@@ -702,7 +684,6 @@ export = {
     renderInfoBox,
     renderSearchPage,
     renderStandardElement,
-    renderTreePage,
     renderArticleHeader,
     renderHeader,
     renderTestimonialRefListing,
