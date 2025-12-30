@@ -7,6 +7,16 @@
 import { RefModelAttribute } from "./interfaces";
 import { RefSourceType } from "./ref_listing_interfaces";
 
+const BaptismRefModel: RefModelAttribute[] = [
+    { "name": "id", "types": ["String"] },
+    { "name": "source-type", "types": ["String"] },
+    { "name": "name", "types": ["String"] },
+    { "name": "date", "types": ["String"] },
+    { "name": "place", "types": ["String"] },
+    { "name": "link", "types": ["String", "undefined"] },
+    { "name": "is-copy", "types": ["Boolean", "undefined"] }
+];
+
 const BookRefModel: RefModelAttribute[] = [
     { "name": "id", "types": ["String"] },
     { "name": "source-type", "types": ["String"] },
@@ -112,6 +122,7 @@ const JournalRefModel: RefModelAttribute[] = [
 export const RefListingModels: any = {
     "book": BookRefModel,
     "census": CensusRefModel,
+    "baptism": BaptismRefModel,
     "birth-certificate": BirthCertificateRefModel,
     "death-certificate": DeathCertificateRefModel,
     "lazy": LazyRefModel,

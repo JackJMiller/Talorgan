@@ -5,7 +5,7 @@
 */
 
 import { markImage, parseLink, throwError, throwWarning } from "./functions";
-import { RefListing, TestimonialRefListing, CensusRefListing, DeathCertificateRefListing, BirthCertificateRefListing, MarriageCertificateRefListing, ValuationRollRefListing, LazyRefListing, BookRefListing, JournalRefListing, NewspaperRefListing, WebsiteRefListing, ElectoralRegisterRefListing } from "./ref_listing_interfaces";
+import { RefListing, BaptismRefListing, BurialRefListing, TestimonialRefListing, CensusRefListing, DeathCertificateRefListing, BirthCertificateRefListing, MarriageCertificateRefListing, ValuationRollRefListing, LazyRefListing, BookRefListing, JournalRefListing, NewspaperRefListing, WebsiteRefListing, ElectoralRegisterRefListing } from "./ref_listing_interfaces";
 import { htmlString, isSplitFormat, renderDate, renderElement, renderRefListing, renderQuickRefListing } from "./rendering";
 import { BuildData, ImageDefinition, InfoBox, InlineElement, Metadata, PageData } from "./interfaces";
 
@@ -600,6 +600,28 @@ function renderDeathCertificateRefListing(element: DeathCertificateRefListing, b
     return `<div class="reference">${element.id}. ${opening} of ${element["name"]}. ${ending} ${date}, ${element["place"]}.</div>`;
 }
 
+function renderBaptismRefListing(element: BaptismRefListing, buildData: BuildData): string {
+    let opening = element["is-copy"] ? "Copy of the baptism record" : "Baptism record";
+    const ending = element["is-copy"] ? "Issued" : "Registered";
+    const date = element["date"] || "on an unknown date";
+    if (element["link"]) {
+        buildData.sourcesCited.push(element.link);
+        opening = `<a target="_blank" href="../sources/${element["link"]}" class="visible-link">${opening}</a>`;
+    }
+    return `<div class="reference">${element.id}. ${opening} of ${element["name"]}. ${ending} ${date}, ${element["place"]}.</div>`;
+}
+
+function renderBurialRefListing(element: BurialRefListing, buildData: BuildData): string {
+    let opening = element["is-copy"] ? "Copy of the burial record" : "Burial record";
+    const ending = element["is-copy"] ? "Issued" : "Registered";
+    const date = element["date"] || "on an unknown date";
+    if (element["link"]) {
+        buildData.sourcesCited.push(element.link);
+        opening = `<a target="_blank" href="../sources/${element["link"]}" class="visible-link">${opening}</a>`;
+    }
+    return `<div class="reference">${element.id}. ${opening} of ${element["name"]}. ${ending} ${date}, ${element["place"]}.</div>`;
+}
+
 function renderBirthCertificateRefListing(element: BirthCertificateRefListing, buildData: BuildData): string {
     let opening = element["is-copy"] ? "Copy of the birth certificate" : "Birth certificate";
     const ending = element["is-copy"] ? "Issued" : "Registered";
@@ -674,6 +696,7 @@ function renderLink(placeholder: string, target: string) {
 export = {
     renderArticle,
     renderArticleFeatures,
+    renderBaptismRefListing,
     renderHomepage,
     renderFooter,
     renderCarouselGallery,
@@ -688,6 +711,7 @@ export = {
     renderHeader,
     renderTestimonialRefListing,
     renderCensusRefListing,
+    renderBurialRefListing,
     renderDeathCertificateRefListing,
     renderBirthCertificateRefListing,
     renderMarriageCertificateRefListing,

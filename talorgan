@@ -86,6 +86,10 @@ elif [[ $# -eq 1 && "$1" == "list-builds" ]]; then
 
     ListBuilds
 
+elif [[ $# -eq 2 && "$1" == "create-tree" ]]; then
+
+    node $PROGRAM_PATH/src/tree.js $2 $( realpath build/res/tree_nodes.json )
+
 else
 
     if [ "$1" != "--help" ]; then

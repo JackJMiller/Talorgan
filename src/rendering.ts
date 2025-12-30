@@ -8,7 +8,7 @@ import HTMLRendering from "./html_rendering";
 import { MONTHS } from "./constants";
 import { BuildData, ImageDefinition, InfoBox, InlineElement, Metadata } from "./interfaces";
 import { markImage, recordRefListing, throwError, throwWarning } from "./functions";
-import { BirthCertificateRefListing, BookRefListing, CensusRefListing, DeathCertificateRefListing, ElectoralRegisterRefListing, JournalRefListing, LazyRefListing, MarriageCertificateRefListing, NewspaperRefListing, RefListing, TestimonialRefListing, ValuationRollRefListing, WebsiteRefListing } from "./ref_listing_interfaces";
+import { BaptismRefListing, BirthCertificateRefListing, BookRefListing, BurialRefListing, CensusRefListing, DeathCertificateRefListing, ElectoralRegisterRefListing, JournalRefListing, LazyRefListing, MarriageCertificateRefListing, NewspaperRefListing, RefListing, TestimonialRefListing, ValuationRollRefListing, WebsiteRefListing } from "./ref_listing_interfaces";
 import { errorCheckReference, validateInfoBox, validateInfoTag } from "./validation";
 
 export function renderHomepage(buildData: BuildData): string {
@@ -93,6 +93,9 @@ export function renderRefListing(element: RefListing, buildData: BuildData): str
     if (element["source-type"] == "newspaper") {
         return HTMLRendering.renderNewspaperRefListing(element as NewspaperRefListing);
     }
+    else if (element["source-type"] == "baptism") {
+        return HTMLRendering.renderBaptismRefListing(element as BaptismRefListing, buildData);
+    }
     else if (element["source-type"] == "journal") {
         return HTMLRendering.renderJournalRefListing(element as JournalRefListing);
     }
@@ -113,6 +116,9 @@ export function renderRefListing(element: RefListing, buildData: BuildData): str
     }
     else if (element["source-type"] == "death-certificate") {
         return HTMLRendering.renderDeathCertificateRefListing(element as DeathCertificateRefListing, buildData);
+    }
+    else if (element["source-type"] == "burial") {
+        return HTMLRendering.renderBurialRefListing(element as BurialRefListing, buildData);
     }
     else if (element["source-type"] == "census") {
         return HTMLRendering.renderCensusRefListing(element as CensusRefListing, buildData);

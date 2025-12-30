@@ -4,8 +4,19 @@
 **  Licensed under version 3 of the GNU General Public License
 */
 
-export type RefListing = TestimonialRefListing | CensusRefListing | DeathCertificateRefListing | BirthCertificateRefListing | MarriageCertificateRefListing | ValuationRollRefListing | LazyRefListing | BookRefListing | JournalRefListing | NewspaperRefListing | WebsiteRefListing | ElectoralRegisterRefListing;
-export type RefSourceType = "book" | "census" | "birth-certificate" | "death-certificate" | "lazy" | "marriage-certificate" | "newspaper" | "testimonial" | "valuation-roll" | "webpage" | "journal" | "electoral-register";
+export type RefListing = BaptismRefListing | BurialRefListing | TestimonialRefListing | CensusRefListing | DeathCertificateRefListing | BirthCertificateRefListing | MarriageCertificateRefListing | ValuationRollRefListing | LazyRefListing | BookRefListing | JournalRefListing | NewspaperRefListing | WebsiteRefListing | ElectoralRegisterRefListing;
+export type RefSourceType = "burial" | "book" | "census" | "birth-certificate" | "death-certificate" | "lazy" | "marriage-certificate" | "newspaper" | "testimonial" | "valuation-roll" | "webpage" | "journal" | "electoral-register";
+
+export interface BaptismRefListing {
+    "type": "baptism",
+    "id": string,
+    "source-type": string,
+    "name": string,
+    "date": string,
+    "place": string,
+    "link": string,
+    "is-copy": boolean
+};
 
 export interface BookRefListing {
     "type": "book",
@@ -24,6 +35,17 @@ export interface CensusRefListing {
     "id": string,
     "source-type": string,
     "year": string,
+    "link": string,
+    "is-copy": boolean
+};
+
+export interface BurialRefListing {
+    "type": "burial",
+    "id": string,
+    "source-type": string,
+    "name": string,
+    "date": string,
+    "place": string,
     "link": string,
     "is-copy": boolean
 };

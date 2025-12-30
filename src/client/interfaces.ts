@@ -15,8 +15,6 @@ interface ClientTree {
 
 interface ClientTreeNode {
     id: string,
-    x: number,
-    y: number,
     connections: any
 }
 

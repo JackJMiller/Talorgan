@@ -57,7 +57,7 @@ function element(id: string): any {
 
 function renderDate(rawDate: string): string {
 
-    if (rawDate == "Unknown") return rawDate;
+    if (rawDate == "Unknown") return "date unknown";
 
     let circa = (rawDate[0] === "c") ? "circa" : "";
     if (circa) rawDate = rawDate.slice(1);

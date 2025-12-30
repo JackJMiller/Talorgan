@@ -13,8 +13,6 @@ export interface ClientTree {
 
 export interface ClientTreeNode {
     "id": string,
-    "x": number,
-    "y": number,
     "connections": any
 }
 
@@ -127,6 +125,14 @@ export interface ProjectPackage {
 export type Reference = BirthCertificateReference | MarriageCertificateReference | DeathCertificateReference | CensusReference | NewspaperReference | ValuationRollReference | WebsiteReference | LazyReference;
 
 export interface BirthCertificateReference {
+    "source-type": string,
+    "name": string,
+    "date": string,
+    "place": string,
+    "link": string
+}
+
+export interface BurialReference {
     "source-type": string,
     "name": string,
     "date": string,

@@ -19,7 +19,7 @@ export function build(buildData: BuildData) {
     bugCheckBuild(buildData);
 
     savePage("res/build_sheet.js", "const BUILD_SHEET = " + JSON.stringify(createBuildSheet(buildData), null, 4) + "\n");
-    savePage("res/tree_nodes.js", "const CLIENT_TREE = " + JSON.stringify(constructClientTree(buildData.tree), null, 4) + "\n");
+    savePage("res/tree_nodes.json", JSON.stringify(constructClientTree(buildData.tree), null, 4) + "\n");
 
     savePage("index.html", renderHomepage(buildData));
     savePage("search.html", renderSearchPage(buildData));
@@ -38,7 +38,7 @@ function constructClientTree(tree: Tree): ClientTree {
     let IDs = Object.keys(tree.nodes);
 
     for (let id of IDs) {
-        clientTree.nodes[id] = { id: id, connections: tree.nodes[id].connections, x: 0, y: 0 };
+        clientTree.nodes[id] = { id: id, connections: tree.nodes[id].connections };
     }
 
     return clientTree;

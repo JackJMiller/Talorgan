@@ -12,7 +12,7 @@ import { BuildData } from "./interfaces";
 export function extractDate(rawDate: string, buildData: BuildData): string {
 
     if (rawDate === "present") return rawDate;
-    if (!rawDate) return "Unknown";
+    if (!rawDate) return "an unknown date";
 
     let date = rawDate.split(" ");
 
