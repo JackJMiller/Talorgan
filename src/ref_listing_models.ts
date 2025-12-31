@@ -5,7 +5,6 @@
 */
 
 import { RefModelAttribute } from "./interfaces";
-import { RefSourceType } from "./ref_listing_interfaces";
 
 const BaptismRefModel: RefModelAttribute[] = [
     { "name": "id", "types": ["String"] },

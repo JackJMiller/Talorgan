@@ -10,8 +10,6 @@ function search(query: SearchQuery) {
 
     let keys = Object.keys(BUILD_SHEET.pageData);
 
-    let articleName = query["article-name"];
-
     let returns: any = {};
 
     for (let key of keys) {

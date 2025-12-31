@@ -4,9 +4,8 @@
 **  Licensed under version 3 of the GNU General Public License
 */
 
-import { BuildData, ErrorNotice, InfoBox, InfoTag, Metadata, PageData } from "./interfaces";
+import { BuildData, ErrorNotice, InfoBox, InfoTag, Metadata } from "./interfaces";
 import { evalArticleSelection, isLink, parseLink, recordErrorNotice, throwError } from "./functions";
-import { RefListing, RefSourceType } from "./ref_listing_interfaces";
 import { RefListingModels } from "./ref_listing_models";
 import { extractDate } from "./sanitisation";
 

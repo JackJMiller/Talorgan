@@ -5,7 +5,6 @@
 */
 
 export type RefListing = StandardRefListing | TestimonialRefListing | CensusRefListing | MarriageCertificateRefListing | ValuationRollRefListing | LazyRefListing | BookRefListing | JournalRefListing | NewspaperRefListing | WebsiteRefListing | ElectoralRegisterRefListing;
-export type RefSourceType = "burial" | "book" | "census" | "birth-certificate" | "death-certificate" | "lazy" | "marriage-certificate" | "newspaper" | "testimonial" | "valuation-roll" | "webpage" | "journal" | "electoral-register";
 
 export interface StandardRefListing {
     "type": string,

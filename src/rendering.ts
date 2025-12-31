@@ -6,10 +6,10 @@
 
 import HTMLRendering from "./html_rendering";
 import { MONTHS, STANDARD_RECORD_TYPES } from "./constants";
-import { BuildData, ImageDefinition, InfoBox, InlineElement, Metadata } from "./interfaces";
-import { markImage, recordRefListing, throwError, throwWarning } from "./functions";
+import { BuildData, InfoBox, InlineElement, Metadata } from "./interfaces";
+import { markImage, recordRefListing, throwError } from "./functions";
 import { BookRefListing, CensusRefListing, ElectoralRegisterRefListing, JournalRefListing, LazyRefListing, MarriageCertificateRefListing, NewspaperRefListing, StandardRefListing, RefListing, TestimonialRefListing, ValuationRollRefListing, WebsiteRefListing } from "./ref_listing_interfaces";
-import { errorCheckReference, validateInfoBox, validateInfoTag } from "./validation";
+import { errorCheckReference, validateInfoBox } from "./validation";
 
 export function renderHomepage(buildData: BuildData): string {
     return HTMLRendering.renderHomepage(buildData);

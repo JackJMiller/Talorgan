@@ -6,8 +6,7 @@
 
 import fs from "fs";
 import { regexMatchArticles, throwError } from "./functions";
-import { BuildConfiguration, BuildData, InfoTag, InlineElement, Metadata } from "./interfaces";
-import { validateInfoTag } from "./validation";
+import { BuildConfiguration, BuildData, InlineElement, Metadata } from "./interfaces";
 
 export function loadBuildConfiguration(projectDirectory: string, buildName: string): BuildConfiguration {
 
