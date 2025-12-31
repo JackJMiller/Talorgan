@@ -8,7 +8,7 @@ import HTMLRendering from "./html_rendering";
 import { MONTHS } from "./constants";
 import { BuildData, ImageDefinition, InfoBox, InlineElement, Metadata } from "./interfaces";
 import { markImage, recordRefListing, throwError, throwWarning } from "./functions";
-import { BaptismRefListing, BirthCertificateRefListing, BookRefListing, BurialRefListing, CensusRefListing, DeathCertificateRefListing, ElectoralRegisterRefListing, JournalRefListing, LazyRefListing, MarriageCertificateRefListing, NewspaperRefListing, RefListing, TestimonialRefListing, ValuationRollRefListing, WebsiteRefListing } from "./ref_listing_interfaces";
+import { BookRefListing, CensusRefListing, ElectoralRegisterRefListing, JournalRefListing, LazyRefListing, MarriageCertificateRefListing, NewspaperRefListing, RegisterRefListing, RefListing, TestimonialRefListing, ValuationRollRefListing, WebsiteRefListing } from "./ref_listing_interfaces";
 import { errorCheckReference, validateInfoBox, validateInfoTag } from "./validation";
 
 export function renderHomepage(buildData: BuildData): string {
@@ -94,7 +94,7 @@ export function renderRefListing(element: RefListing, buildData: BuildData): str
         return HTMLRendering.renderNewspaperRefListing(element as NewspaperRefListing);
     }
     else if (element["source-type"] == "baptism") {
-        return HTMLRendering.renderBaptismRefListing(element as BaptismRefListing, buildData);
+        return HTMLRendering.renderBaptismRefListing(element as RegisterRefListing, buildData);
     }
     else if (element["source-type"] == "journal") {
         return HTMLRendering.renderJournalRefListing(element as JournalRefListing);
@@ -112,13 +112,13 @@ export function renderRefListing(element: RefListing, buildData: BuildData): str
         return HTMLRendering.renderMarriageCertificateRefListing(element as MarriageCertificateRefListing, buildData);
     }
     else if (element["source-type"] == "birth-certificate") {
-        return HTMLRendering.renderBirthCertificateRefListing(element as BirthCertificateRefListing, buildData);
+        return HTMLRendering.renderBirthCertificateRefListing(element as RegisterRefListing, buildData);
     }
     else if (element["source-type"] == "death-certificate") {
-        return HTMLRendering.renderDeathCertificateRefListing(element as DeathCertificateRefListing, buildData);
+        return HTMLRendering.renderDeathCertificateRefListing(element as RegisterRefListing, buildData);
     }
     else if (element["source-type"] == "burial") {
-        return HTMLRendering.renderBurialRefListing(element as BurialRefListing, buildData);
+        return HTMLRendering.renderBurialRefListing(element as RegisterRefListing, buildData);
     }
     else if (element["source-type"] == "census") {
         return HTMLRendering.renderCensusRefListing(element as CensusRefListing, buildData);

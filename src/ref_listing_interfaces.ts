@@ -4,11 +4,11 @@
 **  Licensed under version 3 of the GNU General Public License
 */
 
-export type RefListing = BaptismRefListing | BurialRefListing | TestimonialRefListing | CensusRefListing | DeathCertificateRefListing | BirthCertificateRefListing | MarriageCertificateRefListing | ValuationRollRefListing | LazyRefListing | BookRefListing | JournalRefListing | NewspaperRefListing | WebsiteRefListing | ElectoralRegisterRefListing;
+export type RefListing = RegisterRefListing | TestimonialRefListing | CensusRefListing | MarriageCertificateRefListing | ValuationRollRefListing | LazyRefListing | BookRefListing | JournalRefListing | NewspaperRefListing | WebsiteRefListing | ElectoralRegisterRefListing;
 export type RefSourceType = "burial" | "book" | "census" | "birth-certificate" | "death-certificate" | "lazy" | "marriage-certificate" | "newspaper" | "testimonial" | "valuation-roll" | "webpage" | "journal" | "electoral-register";
 
-export interface BaptismRefListing {
-    "type": "baptism",
+export interface RegisterRefListing {
+    "type": string,
     "id": string,
     "source-type": string,
     "name": string,
@@ -35,39 +35,6 @@ export interface CensusRefListing {
     "id": string,
     "source-type": string,
     "year": string,
-    "link": string,
-    "is-copy": boolean
-};
-
-export interface BurialRefListing {
-    "type": "burial",
-    "id": string,
-    "source-type": string,
-    "name": string,
-    "date": string,
-    "place": string,
-    "link": string,
-    "is-copy": boolean
-};
-
-export interface BirthCertificateRefListing {
-    "type": "birth-certificate",
-    "id": string,
-    "source-type": string,
-    "name": string,
-    "date": string,
-    "place": string,
-    "link": string,
-    "is-copy": boolean
-};
-
-export interface DeathCertificateRefListing {
-    "type": "death-certificate",
-    "id": string,
-    "source-type": string,
-    "name": string,
-    "date": string,
-    "place": string,
     "link": string,
     "is-copy": boolean
 };

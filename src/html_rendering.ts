@@ -5,7 +5,7 @@
 */
 
 import { markImage, parseLink, throwError, throwWarning } from "./functions";
-import { RefListing, BaptismRefListing, BurialRefListing, TestimonialRefListing, CensusRefListing, DeathCertificateRefListing, BirthCertificateRefListing, MarriageCertificateRefListing, ValuationRollRefListing, LazyRefListing, BookRefListing, JournalRefListing, NewspaperRefListing, WebsiteRefListing, ElectoralRegisterRefListing } from "./ref_listing_interfaces";
+import { RegisterRefListing, RefListing, TestimonialRefListing, CensusRefListing, MarriageCertificateRefListing, ValuationRollRefListing, LazyRefListing, BookRefListing, JournalRefListing, NewspaperRefListing, WebsiteRefListing, ElectoralRegisterRefListing } from "./ref_listing_interfaces";
 import { htmlString, isSplitFormat, renderDate, renderElement, renderRefListing, renderQuickRefListing } from "./rendering";
 import { BuildData, ImageDefinition, InfoBox, InlineElement, Metadata, PageData } from "./interfaces";
 
@@ -589,7 +589,7 @@ function renderCensusRefListing(element: CensusRefListing, buildData: BuildData)
     return `<div class="reference">${element.id}. ${text}.</div>`;
 }
 
-function renderDeathCertificateRefListing(element: DeathCertificateRefListing, buildData: BuildData): string {
+function renderDeathCertificateRefListing(element: RegisterRefListing, buildData: BuildData): string {
     let opening = element["is-copy"] ? "Copy of the death certificate" : "Death certificate";
     const ending = element["is-copy"] ? "Issued" : "Registered";
     const date = element["date"] || "on an unknown date";
@@ -600,7 +600,7 @@ function renderDeathCertificateRefListing(element: DeathCertificateRefListing, b
     return `<div class="reference">${element.id}. ${opening} of ${element["name"]}. ${ending} ${date}, ${element["place"]}.</div>`;
 }
 
-function renderBaptismRefListing(element: BaptismRefListing, buildData: BuildData): string {
+function renderBaptismRefListing(element: RegisterRefListing, buildData: BuildData): string {
     let opening = element["is-copy"] ? "Copy of the baptism record" : "Baptism record";
     const ending = element["is-copy"] ? "Issued" : "Registered";
     const date = element["date"] || "on an unknown date";
@@ -611,7 +611,7 @@ function renderBaptismRefListing(element: BaptismRefListing, buildData: BuildDat
     return `<div class="reference">${element.id}. ${opening} of ${element["name"]}. ${ending} ${date}, ${element["place"]}.</div>`;
 }
 
-function renderBurialRefListing(element: BurialRefListing, buildData: BuildData): string {
+function renderBurialRefListing(element: RegisterRefListing, buildData: BuildData): string {
     let opening = element["is-copy"] ? "Copy of the burial record" : "Burial record";
     const ending = element["is-copy"] ? "Issued" : "Registered";
     const date = element["date"] || "on an unknown date";
@@ -622,7 +622,7 @@ function renderBurialRefListing(element: BurialRefListing, buildData: BuildData)
     return `<div class="reference">${element.id}. ${opening} of ${element["name"]}. ${ending} ${date}, ${element["place"]}.</div>`;
 }
 
-function renderBirthCertificateRefListing(element: BirthCertificateRefListing, buildData: BuildData): string {
+function renderBirthCertificateRefListing(element: RegisterRefListing, buildData: BuildData): string {
     let opening = element["is-copy"] ? "Copy of the birth certificate" : "Birth certificate";
     const ending = element["is-copy"] ? "Issued" : "Registered";
     const date = element["date"] || "on an unknown date";
