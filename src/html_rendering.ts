@@ -415,42 +415,6 @@ function renderGalleryImage(src: string, caption: string | undefined): string {
 
 }
 
-function renderCarouselGallery(element: any, buildData: BuildData): string { 
-
-    let galleryItems: string[] = element.images.map((image: ImageDefinition) => {
-        markImage(image.src, buildData);
-        return renderCarouselGalleryImage(image.src, image.caption);
-    });
-
-    return htmlString(`
-        <div class="carousel-gallery">
-            <button onclick="shiftGallery(-1);" class="carousel-gallery-arrow-container">
-                <img style="width: 40px;" src="../res/arrow_left.svg"/>
-            </button>
-        <div>
-        ${galleryItems.join("")}
-        </div>
-            <button onclick="shiftGallery(1);" class="carousel-gallery-arrow-container">
-                <img style="width: 40px;" src="../res/arrow_right.svg"/>
-            </button>
-        </div>`
-    );
-
-}
-
-function renderCarouselGalleryImage(src: string, caption: string | undefined): string {
-
-    return htmlString(`
-        <div class="carousel-gallery-image-container">
-            <img class="carousel-gallery-image" src="../media/${src}"/>
-            <div class="carousel-gallery-image-text-container">
-                <span class="carousel-gallery-image-text">${caption || ""}</span>
-            </div>
-        </div>`
-    );
-
-}
-
 function renderLogo(size: string, buildData: BuildData): string {
     let name = buildData.projectPackage.name;
     return htmlString(`
@@ -666,8 +630,6 @@ export = {
     renderArticleFeatures,
     renderHomepage,
     renderFooter,
-    renderCarouselGallery,
-    renderCarouselGalleryImage,
     renderGallery,
     renderGalleryImage,
     renderImage,

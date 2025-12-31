@@ -16,7 +16,7 @@ export interface StandardRefListing {
     "place": string,
     "link": string,
     "is-copy": boolean
-};
+}
 
 export interface BookRefListing {
     "type": "book",
@@ -37,7 +37,7 @@ export interface CensusRefListing {
     "year": string,
     "link": string,
     "is-copy": boolean
-};
+}
 
 export interface LazyRefListing {
     "type": "lazy",
@@ -45,7 +45,7 @@ export interface LazyRefListing {
     "source-type": string,
     "source-value": string,
     "source-link": string
-};
+}
 
 export interface MarriageCertificateRefListing {
     "type": "marriage-certificate",
@@ -57,7 +57,7 @@ export interface MarriageCertificateRefListing {
     "place": string,
     "link": string,
     "is-copy": boolean
-};
+}
 
 export interface NewspaperRefListing {
     "type": "newspaper",
@@ -69,7 +69,7 @@ export interface NewspaperRefListing {
     "source-date": string,
     "pages": string,
     "is-copy": boolean
-};
+}
 
 export interface TestimonialRefListing {
     "type": "testimonial",
@@ -78,7 +78,7 @@ export interface TestimonialRefListing {
     "name": string,
     "witness": string,
     "date": string
-};
+}
 
 export interface ValuationRollRefListing {
     "type": "valuation-roll",
@@ -88,7 +88,7 @@ export interface ValuationRollRefListing {
     "source-date": string,
     "source-link": string,
     "is-copy": boolean
-};
+}
 
 export interface WebsiteRefListing {
     "type": "webpage",
@@ -97,7 +97,7 @@ export interface WebsiteRefListing {
     "name-of-website": string,
     "source-link": string,
     "date-retrieved": string
-};
+}
 
 export interface JournalRefListing {
     "type": "journal",
@@ -107,7 +107,7 @@ export interface JournalRefListing {
     "source-date": string,
     "pages": string,
     "source-link": string
-};
+}
 
 export interface ElectoralRegisterRefListing {
     "type": "electoral-register",
@@ -115,4 +115,4 @@ export interface ElectoralRegisterRefListing {
     "source-type": string,
     "year": string
     "link": string
-};
+}
