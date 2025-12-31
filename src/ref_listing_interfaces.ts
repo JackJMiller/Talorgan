@@ -4,10 +4,10 @@
 **  Licensed under version 3 of the GNU General Public License
 */
 
-export type RefListing = RegisterRefListing | TestimonialRefListing | CensusRefListing | MarriageCertificateRefListing | ValuationRollRefListing | LazyRefListing | BookRefListing | JournalRefListing | NewspaperRefListing | WebsiteRefListing | ElectoralRegisterRefListing;
+export type RefListing = StandardRefListing | TestimonialRefListing | CensusRefListing | MarriageCertificateRefListing | ValuationRollRefListing | LazyRefListing | BookRefListing | JournalRefListing | NewspaperRefListing | WebsiteRefListing | ElectoralRegisterRefListing;
 export type RefSourceType = "burial" | "book" | "census" | "birth-certificate" | "death-certificate" | "lazy" | "marriage-certificate" | "newspaper" | "testimonial" | "valuation-roll" | "webpage" | "journal" | "electoral-register";
 
-export interface RegisterRefListing {
+export interface StandardRefListing {
     "type": string,
     "id": string,
     "source-type": string,

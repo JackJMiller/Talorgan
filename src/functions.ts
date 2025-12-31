@@ -327,3 +327,7 @@ export function markImage(imageName: string, buildData: BuildData) {
 export function recordErrorNotice(attribute: string, value: any, errors: ErrorNotice[]) {
     errors.push({ attribute, value });
 }
+
+export function capitaliseFirstLetter(s: string) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+}

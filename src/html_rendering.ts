@@ -4,8 +4,8 @@
 **  Licensed under version 3 of the GNU General Public License
 */
 
-import { markImage, parseLink, throwError, throwWarning } from "./functions";
-import { RegisterRefListing, RefListing, TestimonialRefListing, CensusRefListing, MarriageCertificateRefListing, ValuationRollRefListing, LazyRefListing, BookRefListing, JournalRefListing, NewspaperRefListing, WebsiteRefListing, ElectoralRegisterRefListing } from "./ref_listing_interfaces";
+import { capitaliseFirstLetter, markImage, parseLink, throwError, throwWarning } from "./functions";
+import { StandardRefListing, RefListing, TestimonialRefListing, CensusRefListing, MarriageCertificateRefListing, ValuationRollRefListing, LazyRefListing, BookRefListing, JournalRefListing, NewspaperRefListing, WebsiteRefListing, ElectoralRegisterRefListing } from "./ref_listing_interfaces";
 import { htmlString, isSplitFormat, renderDate, renderElement, renderRefListing, renderQuickRefListing } from "./rendering";
 import { BuildData, ImageDefinition, InfoBox, InlineElement, Metadata, PageData } from "./interfaces";
 
@@ -589,41 +589,9 @@ function renderCensusRefListing(element: CensusRefListing, buildData: BuildData)
     return `<div class="reference">${element.id}. ${text}.</div>`;
 }
 
-function renderDeathCertificateRefListing(element: RegisterRefListing, buildData: BuildData): string {
-    let opening = element["is-copy"] ? "Copy of the death certificate" : "Death certificate";
-    const ending = element["is-copy"] ? "Issued" : "Registered";
-    const date = element["date"] || "on an unknown date";
-    if (element["link"]) {
-        buildData.sourcesCited.push(element.link);
-        opening = `<a target="_blank" href="../sources/${element["link"]}" class="visible-link">${opening}</a>`;
-    }
-    return `<div class="reference">${element.id}. ${opening} of ${element["name"]}. ${ending} ${date}, ${element["place"]}.</div>`;
-}
-
-function renderBaptismRefListing(element: RegisterRefListing, buildData: BuildData): string {
-    let opening = element["is-copy"] ? "Copy of the baptism record" : "Baptism record";
-    const ending = element["is-copy"] ? "Issued" : "Registered";
-    const date = element["date"] || "on an unknown date";
-    if (element["link"]) {
-        buildData.sourcesCited.push(element.link);
-        opening = `<a target="_blank" href="../sources/${element["link"]}" class="visible-link">${opening}</a>`;
-    }
-    return `<div class="reference">${element.id}. ${opening} of ${element["name"]}. ${ending} ${date}, ${element["place"]}.</div>`;
-}
-
-function renderBurialRefListing(element: RegisterRefListing, buildData: BuildData): string {
-    let opening = element["is-copy"] ? "Copy of the burial record" : "Burial record";
-    const ending = element["is-copy"] ? "Issued" : "Registered";
-    const date = element["date"] || "on an unknown date";
-    if (element["link"]) {
-        buildData.sourcesCited.push(element.link);
-        opening = `<a target="_blank" href="../sources/${element["link"]}" class="visible-link">${opening}</a>`;
-    }
-    return `<div class="reference">${element.id}. ${opening} of ${element["name"]}. ${ending} ${date}, ${element["place"]}.</div>`;
-}
-
-function renderBirthCertificateRefListing(element: RegisterRefListing, buildData: BuildData): string {
-    let opening = element["is-copy"] ? "Copy of the birth certificate" : "Birth certificate";
+function renderStandardRefListing(element: StandardRefListing, buildData: BuildData): string {
+    let opening = element["source-type"].replace(/-/g, " ");
+    opening = element["is-copy"] ? "Copy of " + opening : capitaliseFirstLetter(opening);
     const ending = element["is-copy"] ? "Issued" : "Registered";
     const date = element["date"] || "on an unknown date";
     if (element["link"]) {
@@ -696,7 +664,6 @@ function renderLink(placeholder: string, target: string) {
 export = {
     renderArticle,
     renderArticleFeatures,
-    renderBaptismRefListing,
     renderHomepage,
     renderFooter,
     renderCarouselGallery,
@@ -707,13 +674,11 @@ export = {
     renderInfoBox,
     renderSearchPage,
     renderStandardElement,
+    renderStandardRefListing,
     renderArticleHeader,
     renderHeader,
     renderTestimonialRefListing,
     renderCensusRefListing,
-    renderBurialRefListing,
-    renderDeathCertificateRefListing,
-    renderBirthCertificateRefListing,
     renderMarriageCertificateRefListing,
     renderValuationRollRefListing,
     renderLazyRefListing,
