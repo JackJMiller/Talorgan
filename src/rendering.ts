@@ -62,6 +62,9 @@ export function renderElement(element: InlineElement | RefListing | InfoBox, met
     else if (element.type == "gallery") {
         return renderGallery(element as InlineElement, buildData);
     }
+    else if (element.type == "quotation") {
+        return renderQuotation(element, buildData);
+    }
     else {
         throwError(`Found object of unrecognised type '${element.type}'.`, buildData.location, buildData, false);
         return "";
@@ -70,6 +73,10 @@ export function renderElement(element: InlineElement | RefListing | InfoBox, met
 
 export function renderGallery(element: any, buildData: BuildData): string { 
     return HTMLRendering.renderGallery(element, buildData);
+}
+
+export function renderQuotation(element: any, buildData: BuildData): string { 
+    return HTMLRendering.renderQuotation(element, buildData);
 }
 
 export function renderQuickRefListing(key: string, index: number, buildData: BuildData): string {

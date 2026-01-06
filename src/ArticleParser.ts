@@ -14,8 +14,8 @@ class ArticleParser {
     // - ["sol"] denotes the start of a line
     // - ["h", 1] denotes <h1>; ["h", 2] denotes <h2>; etc.
     // - ["text"] denotes plaintext; <p> in the case of HTML output
-    // - ["{", 1] denotes an object; ["{", 2] denotes an object within an
-    //   object; etc.
+    // - ["{", 1] denotes an object; ["{", 2] denotes an object within an object; etc.
+    // - [">"] denotes a quotation
     private q: any[] = ["sol"];
 
     // v denotes the value of the elements; innerHTML in the case of HTML output
@@ -51,6 +51,9 @@ class ArticleParser {
                 else if (c === "{") {
                     this.q = ["obj", 1]
                     this.v = this.v + c;
+                }
+                else if (c === ">") {
+                    this.q = [">"];
                 }
                 else {
                     this.q = ["text"];
@@ -92,6 +95,9 @@ class ArticleParser {
                     this.v = this.v + c;
                 }
             }
+            else if (this.q[0] === ">") {
+                this.v = this.v + c;
+            }
             else if (this.q[0] === "h") {
                 if (c === "#") {
                     this.q[1] = this.q[1] + 1;
@@ -115,9 +121,17 @@ class ArticleParser {
             if (this.v !== "") {
                 this.parsed.push(createInlineElement(this.q, this.v, this.metadata, this.buildData));
             }
-            this.q = ["sol"];
-            this.v = "";
         }
+
+        else if (this.q[0] === ">") {
+            this.parsed.push({ "type": "quotation", "tag": "", "inner": this.v });
+        }
+
+        else {
+            return;
+        }
+        this.q = ["sol"];
+        this.v = "";
     }
 
 }

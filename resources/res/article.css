@@ -2,3 +2,11 @@
     background: white;
     padding: 10px 0 20px 0;
 }
+
+.quotation {
+    width: 90%;
+    margin: 2rem auto;
+    font-family: serif;
+    font-weight: 300;
+    text-align: justify;
+}

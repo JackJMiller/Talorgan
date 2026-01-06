@@ -404,6 +404,14 @@ function renderGallery(element: any, buildData: BuildData): string {
 
 }
 
+function renderQuotation(element: any, buildData: BuildData): string { 
+    return htmlString(`
+        <div class="quotation">
+            ${element.inner}
+        </div>
+    `);
+}
+
 function renderGalleryImage(src: string, caption: string | undefined): string {
 
     return htmlString(`
@@ -637,6 +645,7 @@ export = {
     renderSearchPage,
     renderStandardElement,
     renderStandardRefListing,
+    renderQuotation,
     renderArticleHeader,
     renderHeader,
     renderTestimonialRefListing,
